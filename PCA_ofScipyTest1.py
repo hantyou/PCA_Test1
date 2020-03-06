@@ -2,9 +2,8 @@ import cv2
 import numpy as np
 from numpy import linalg as lg
 
-
 def funcPCA():
-    v_path = r"D:\Programming\MATLAB\video_prog\MVI_1739.MOV"
+    v_path = r"D:\Programming\MATLAB\video_prog\MVI_2883.MOV"
     vid = cv2.VideoCapture(v_path)
     flag = vid.isOpened()
     if flag:
@@ -47,7 +46,7 @@ def funcPCA():
             rebuild = np.uint8(rebuild)
             cv2.imshow("rePic", rePic)
             cv2.imshow("Frames Sample with PCA", rebuild)
-            cv2.imwrite("rePic" + str(NumFlag) + ".jpg", rePic)
+            cv2.imwrite(r"result\rePic" + str(NumFlag) + ".jpg", rePic)
         if NumFlag >= SampleFrameNum and flag == 1:
             Sub1 = cv2.absdiff(rePic, frame)
             ret, Sub = cv2.threshold(Sub1, 30, 255, type=cv2.THRESH_BINARY)
@@ -56,6 +55,7 @@ def funcPCA():
         cv2.imshow("Frames Sample", FrameSamples)
         cv2.waitKey(1)
 
+funcPCA()
 
 path1 = r'D:\Programming\MatrixTheory\IMG_0107.JPG'
 path2 = r"D:\Programming\MATLAB\video_prog\org.png"
@@ -77,5 +77,5 @@ for i in range(20):
     cv2.imshow("org", a)
     cv2.imshow("rebuild", rebuild)
     cv2.imwrite("org.jpg", a)
-    cv2.imwrite("rebuild" + str(pca) + ".jpg", rebuild, (r, c))
+    cv2.imwrite(r"result\rebuild" + str(pca) + ".jpg", rebuild, (r, c))
     cv2.waitKey(10)
